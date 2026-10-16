@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="DANUNIVERSAL'S Script AI — Genera scripts profesionales para Roblox Studio y más con inteligencia artificial." />
+  <meta name="theme-color" content="#0a0a0c" />
+  <title>DANUNIVERSAL'S Script AI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+/* =========================================
+   DANUNIVERSAL'S | SCRIPT AI
+   Premium Design System
+   ========================================= */
+
+:root {
+  --bg-primary: #0a0a0c;
+  --bg-secondary: #121216;
+  --bg-card: #1a1a20;
+  --bg-card-hover: #22222a;
+  --bg-input: #16161c;
+  --gold: #d4af37;
+  --gold-light: #f0d878;
+  --gold-dark: #a8872a;
+  --gold-metallic: linear-gradient(135deg, #f0d878 0%, #d4af37 40%, #a8872a 70%, #d4af37 100%);
+  --white: #f5f5f7;
+  --white-muted: #a0a0a8;
+  --blue-pastel: #7eb8da;
+  --blue-pastel-dim: rgba(126, 184, 218, 0.15);
+  --border: rgba(212, 175, 55, 0.18);
+  --border-strong: rgba(212, 175, 55, 0.35);
+  --success: #4ade80;
+  --error: #f87171;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --shadow-gold: 0 4px 24px rgba(212, 175, 55, 0.12);
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "SF Mono", Consolas, monospace;
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--white);
+  line-height: 1.6;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(212, 175, 55, 0.08), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 80%, rgba(126, 184, 218, 0.05), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover {
+  color: var(--gold-light);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* ========== LOGO ========== */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-d {
+  font-family: "Playfair Display", "Georgia", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 2.4rem;
+  background: var(--gold-metallic);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 6px rgba(212, 175, 55, 0.4));
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.logo-text {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  text-transform: uppercase;
+}
+
+.logo-text span {
+  color: var(--gold);
+}
+
+/* ========== HEADER ========== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 12, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all var(--transition);
+  white-space: nowrap;
+  min-height: 44px;
+}
+
+.btn-primary {
+  background: var(--gold-metallic);
+  color: #0a0a0c;
+  box-shadow: var(--shadow-gold);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(212, 175, 55, 0.3);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--border-strong);
+}
+.btn-secondary:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--gold);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white-muted);
+  padding: 10px 14px;
+}
+.btn-ghost:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-icon {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 12px;
+  background: var(--bg-card);
+  color: var(--white-muted);
+  border: 1px solid var(--border);
+}
+.btn-icon:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: var(--bg-card-hover);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ========== HERO ========== */
+.hero {
+  position: relative;
+  z-index: 1;
+  padding: 60px 20px 80px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--blue-pastel-dim);
+  border: 1px solid rgba(126, 184, 218, 0.25);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--blue-pastel);
+  margin-bottom: 24px;
+  letter-spacing: 0.03em;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+}
+
+.hero h1 .gold {
+  background: var(--gold-metallic);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+  font-size: 1.1rem;
+  color: var(--white-muted);
+  max-width: 560px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+/* ========== SECTIONS ========== */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--white-muted);
+  margin-bottom: 40px;
+  font-size: 1rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  transition: all var(--transition);
+}
+
+.feature-card:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-card-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(212, 175, 55, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  color: var(--gold);
+}
+
+.feature-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  font-size: 0.92rem;
+  color: var(--white-muted);
+  line-height: 1.55;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+}
+
+.category-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 22px 16px;
+  text-align: center;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.category-card:hover {
+  border-color: var(--gold);
+  background: var(--bg-card-hover);
+}
+
+.category-card .icon {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.category-card span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--white-muted);
+}
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.script-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  transition: all var(--transition);
+}
+
+.script-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow);
+}
+
+.script-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.script-card h3 {
+  font-size: 1.05rem;
+}
+
+.script-lang {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(126, 184, 218, 0.15);
+  color: var(--blue-pastel);
+  font-weight: 500;
+}
+
+.script-card p {
+  font-size: 0.88rem;
+  color: var(--white-muted);
+  margin-bottom: 14px;
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.news-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.news-date {
+  font-size: 0.78rem;
+  color: var(--gold);
+  font-weight: 600;
+  min-width: 70px;
+}
+
+.news-item p {
+  font-size: 0.92rem;
+  color: var(--white-muted);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--border);
+  padding: 40px 20px 30px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer .logo {
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.footer p {
+  color: var(--white-muted);
+  font-size: 0.88rem;
+}
+
+.footer-brand {
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+/* ========== CHAT / APP VIEW ========== */
+.app-view {
+  display: none;
+  position: relative;
+  z-index: 1;
+  height: calc(100dvh - 70px);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 12px;
+  flex-direction: column;
+}
+
+.app-view.active {
+  display: flex;
+}
+
+.chat-layout {
+  display: flex;
+  flex: 1;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-secondary);
+  margin: 12px 0 16px;
+}
+
+.sidebar {
+  width: 260px;
+  background: var(--bg-card);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.sidebar-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-header .btn {
+  width: 100%;
+}
+
+.history-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.history-item {
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  color: var(--white-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-item:hover,
+.history-item.active {
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--white);
+}
+
+.history-empty {
+  padding: 20px;
+  text-align: center;
+  color: var(--white-muted);
+  font-size: 0.85rem;
+}
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.message {
+  max-width: 92%;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message.user {
+  align-self: flex-end;
+}
+
+.message.assistant {
+  align-self: flex-start;
+}
+
+.message-bubble {
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.message.user .message-bubble {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(168, 135, 42, 0.2));
+  border: 1px solid var(--border-strong);
+  border-bottom-right-radius: 4px;
+  color: var(--white);
+}
+
+.message.assistant .message-bubble {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 4px;
+}
+
+.message-meta {
+  font-size: 0.72rem;
+  color: var(--white-muted);
+  margin-top: 6px;
+  padding: 0 4px;
+}
+
+.code-block {
+  margin-top: 12px;
+  background: #0d0d10;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(212, 175, 55, 0.08);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.code-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.code-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.code-actions .btn {
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  min-height: 34px;
+  border-radius: 8px;
+}
+
+.code-content {
+  padding: 16px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: #e0e0e6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.input-area {
+  padding: 14px 16px 18px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.input-wrapper textarea {
+  flex: 1;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  color: var(--white);
+  font-family: inherit;
+  font-size: 0.95rem;
+  resize: none;
+  min-height: 52px;
+  max-height: 160px;
+  line-height: 1.45;
+  transition: border-color var(--transition);
+}
+
+.input-wrapper textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.input-wrapper textarea::placeholder {
+  color: var(--white-muted);
+}
+
+.send-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--gold-metallic);
+  color: #0a0a0c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+
+.send-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-gold);
+}
+
+.send-btn:disabled {
+  opacity: 0.5;
+}
+
+.input-hint {
+  font-size: 0.75rem;
+  color: var(--white-muted);
+  margin-top: 8px;
+  text-align: center;
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+  width: fit-content;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+.error-bubble {
+  background: rgba(248, 113, 113, 0.12) !important;
+  border-color: rgba(248, 113, 113, 0.35) !important;
+  color: #fca5a5 !important;
+}
+
+.welcome-chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--white-muted);
+}
+
+.welcome-chat .logo-d {
+  font-size: 3.5rem;
+  margin-bottom: 12px;
+}
+
+.welcome-chat h2 {
+  color: var(--white);
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.welcome-chat p {
+  max-width: 360px;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  max-width: 500px;
+}
+
+.suggestion-chip {
+  padding: 10px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--white-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.suggestion-chip:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.sidebar-toggle {
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.landing {
+  display: block;
+}
+
+.landing.hidden {
+  display: none;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .header-inner {
+    padding: 0;
+  }
+
+  .logo-text {
+    font-size: 0.95rem;
+  }
+
+  .logo-d {
+    font-size: 1.9rem;
+  }
+
+  .hero {
+    padding: 40px 16px 50px;
+  }
+
+  .section {
+    padding: 40px 16px;
+  }
+
+  .sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: var(--shadow);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggle {
+    display: flex;
+  }
+
+  .chat-layout {
+    position: relative;
+  }
+
+  .code-actions {
+    width: 100%;
+  }
+
+  .code-actions .btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .message {
+    max-width: 98%;
+  }
+
+  .nav-actions .btn-secondary {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 11px 16px;
+    font-size: 0.9rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.5);
+}
+  </style>
+</head>
+<body>
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="#" class="logo" id="logoHome">
+        <span class="logo-d">D</span>
+        <span class="logo-text">DANUNIVERSAL<span>'S</span></span>
+      </a>
+      <div class="nav-actions">
+        <button class="btn btn-secondary" id="btnGoChat" type="button">Crear Scripts</button>
+        <button class="btn btn-icon sidebar-toggle" id="btnSidebar" type="button" aria-label="Menú" title="Historial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== LANDING ========== -->
+  <div class="landing" id="landing">
+    <section class="hero">
+      <div class="hero-badge">
+        <span>✦</span> Inteligencia Artificial para Scripts
+      </div>
+      <h1>
+        Crea scripts<br />
+        <span class="gold">inteligentes</span> en segundos
+      </h1>
+      <p class="hero-desc">
+        DANUNIVERSAL'S Script AI genera código limpio y listo para usar, principalmente para Roblox Studio, con explicaciones claras y marca profesional en cada resultado.
+      </p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" id="btnStart" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          Comenzar a crear scripts
+        </button>
+        <a href="#features" class="btn btn-secondary">Ver funciones</a>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <h2 class="section-title">Funciones principales</h2>
+      <p class="section-subtitle">Todo lo que necesitas para generar, mejorar y entender tus scripts</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Generación instantánea</h3>
+          <p>Describe lo que necesitas y obtén código completo, organizado y listo para copiar en segundos.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛠️</div>
+          <h3>Corregir y mejorar</h3>
+          <p>Pega tu script existente y la IA lo corrige, optimiza o amplía manteniendo la funcionalidad.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📘</div>
+          <h3>Explicaciones claras</h3>
+          <p>Cada script incluye explicación de su función e instrucciones exactas de ubicación en Roblox Studio.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Diseñado para móvil</h3>
+          <p>Interfaz optimizada para iPhone y dispositivos táctiles. Crea scripts desde cualquier lugar.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏷️</div>
+          <h3>Marca DANUNIVERSAL'S</h3>
+          <p>Todos los scripts incluyen el encabezado oficial de autoría de DANUNIVERSAL'S Script AI.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h3>Historial de chats</h3>
+          <p>Conserva tus conversaciones y retoma proyectos anteriores cuando lo necesites.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Categorías</h2>
+      <p class="section-subtitle">Elige un tipo de script para empezar más rápido</p>
+      <div class="categories-grid" id="categories">
+        <div class="category-card" data-prompt="Crea un sistema de inventario completo para Roblox Studio con UI">
+          <div class="icon">🎒</div>
+          <span>Inventario</span>
+        </div>
+        <div class="category-card" data-prompt="Crea un sistema de combate melee con animaciones para Roblox">
+          <div class="icon">⚔️</div>
+          <span>Combate</span>
+        </div>
+        <div class="category-card" data-prompt="Crea un sistema de monedas y economía con DataStore para Roblox">
+          <div class="icon">💰</div>
+          <span>Economía</span>
+        </div>
+        <div class="category-card" data-prompt="Crea un GUI de menú principal moderno para Roblox Studio">
+          <div class="icon">🖥️</div>
+          <span>Interfaces</span>
+        </div>
+        <div class="category-card" data-prompt="Crea un sistema de misiones y quests para Roblox">
+          <div class="icon">📜</div>
+          <span>Misiones</span>
+        </div>
+        <div class="category-card" data-prompt="Crea un anti-cheat básico y validaciones de servidor para Roblox">
+          <div class="icon">🛡️</div>
+          <span>Seguridad</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Scripts destacados</h2>
+      <p class="section-subtitle">Ejemplos de lo que puedes generar con DANUNIVERSAL'S</p>
+      <div class="library-grid">
+        <div class="script-card">
+          <div class="script-card-header">
+            <h3>Sistema de Teletransporte</h3>
+            <span class="script-lang">Luau</span>
+          </div>
+          <p>Teletransporta jugadores entre ubicaciones con cooldown y efectos visuales.</p>
+          <button class="btn btn-secondary" style="width:100%" data-prompt="Crea un sistema de teletransporte entre puntos con cooldown y partículas para Roblox Studio">Generar similar</button>
+        </div>
+        <div class="script-card">
+          <div class="script-card-header">
+            <h3>Leaderstats + Guardado</h3>
+            <span class="script-lang">Luau</span>
+          </div>
+          <p>Leaderstats de monedas y nivel con guardado automático en DataStore.</p>
+          <button class="btn btn-secondary" style="width:100%" data-prompt="Crea un sistema de leaderstats (monedas y nivel) con DataStoreService para guardar progreso en Roblox">Generar similar</button>
+        </div>
+        <div class="script-card">
+          <div class="script-card-header">
+            <h3>Notificaciones Toast</h3>
+            <span class="script-lang">Luau</span>
+          </div>
+          <p>Sistema de notificaciones elegantes en pantalla para el jugador.</p>
+          <button class="btn btn-secondary" style="width:100%" data-prompt="Crea un sistema de notificaciones tipo toast animadas para Roblox Studio (cliente)">Generar similar</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Novedades</h2>
+      <p class="section-subtitle">Últimas actualizaciones de la plataforma</p>
+      <div class="news-list">
+        <div class="news-item">
+          <span class="news-date">Oct 2026</span>
+          <p>Lanzamiento oficial de DANUNIVERSAL'S Script AI con integración real de Groq y soporte completo para Roblox Studio.</p>
+        </div>
+        <div class="news-item">
+          <span class="news-date">Oct 2026</span>
+          <p>Añadidos botones de Mejorar, Corregir y Explicar código. Historial de conversaciones y diseño optimizado para iPhone.</p>
+        </div>
+        <div class="news-item">
+          <span class="news-date">Próximamente</span>
+          <p>Biblioteca de plantillas guardadas, exportación directa y más lenguajes de programación.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="logo">
+        <span class="logo-d">D</span>
+        <span class="logo-text">DANUNIVERSAL<span>'S</span></span>
+      </div>
+      <p>Plataforma profesional de generación de scripts con inteligencia artificial.</p>
+      <p class="footer-brand">DANUNIVERSAL'S | SCRIPT AI</p>
+    </footer>
+  </div>
+
+  <!-- ========== APP / CHAT VIEW ========== -->
+  <div class="app-view" id="appView">
+    <div class="chat-layout">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <button class="btn btn-primary" id="btnNewChat" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            Nuevo chat
+          </button>
+        </div>
+        <div class="history-list" id="historyList">
+          <div class="history-empty">Aún no hay conversaciones</div>
+        </div>
+      </aside>
+
+      <div class="chat-main">
+        <div class="messages" id="messages">
+          <div class="welcome-chat" id="welcomeChat">
+            <span class="logo-d">D</span>
+            <h2>DANUNIVERSAL'S Script AI</h2>
+            <p>Describe el script que necesitas. Puedo generar código para Roblox Studio, mejorar scripts existentes o explicar cómo funcionan.</p>
+            <div class="suggestions">
+              <button class="suggestion-chip" data-prompt="Crea un sistema de monedas con GUI para Roblox Studio">Sistema de monedas</button>
+              <button class="suggestion-chip" data-prompt="Crea un script de anti-AFK para Roblox">Anti-AFK</button>
+              <button class="suggestion-chip" data-prompt="Crea un menú de pausa con botones para Roblox">Menú de pausa</button>
+              <button class="suggestion-chip" data-prompt="Explica cómo funciona un RemoteEvent en Roblox">¿Qué es RemoteEvent?</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-area">
+          <div class="input-wrapper">
+            <textarea
+              id="userInput"
+              placeholder="Describe el script que quieres crear..."
+              rows="1"
+              maxlength="12000"
+              aria-label="Mensaje"
+            ></textarea>
+            <button class="send-btn" id="btnSend" type="button" aria-label="Enviar" disabled>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+          <p class="input-hint">DANUNIVERSAL'S · Scripts con marca oficial · Potenciado por Groq</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+/* =========================================
+   DANUNIVERSAL'S | SCRIPT AI
+   Frontend Application
+   ========================================= */
+
+(function () {
+  "use strict";
+
+  const state = {
+    conversations: [],
+    currentId: null,
+    isGenerating: false,
+  };
+
+  const STORAGE_KEY = "danuniversals_chats_v1";
+
+  const $ = (sel) => document.querySelector(sel);
+  const landing = $("#landing");
+  const appView = $("#appView");
+  const messagesEl = $("#messages");
+  const welcomeChat = $("#welcomeChat");
+  const userInput = $("#userInput");
+  const btnSend = $("#btnSend");
+  const historyList = $("#historyList");
+  const sidebar = $("#sidebar");
+  const btnSidebar = $("#btnSidebar");
+  const btnNewChat = $("#btnNewChat");
+  const btnStart = $("#btnStart");
+  const btnGoChat = $("#btnGoChat");
+  const logoHome = $("#logoHome");
+
+  function uid() {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  }
+
+  function save() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.conversations));
+    } catch (e) {
+      console.warn("No se pudo guardar el historial", e);
+    }
+  }
+
+  function load() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        state.conversations = JSON.parse(raw);
+      }
+    } catch (e) {
+      state.conversations = [];
+    }
+  }
+
+  function getCurrent() {
+    return state.conversations.find((c) => c.id === state.currentId) || null;
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function parseReply(text) {
+    const parts = [];
+    const regex = /```(\w*)\n?([\s\S]*?)```/g;
+    let lastIndex = 0;
+    let match;
+
+    while ((match = regex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push({ type: "text", content: text.slice(lastIndex, match.index) });
+      }
+      parts.push({
+        type: "code",
+        lang: match[1] || "lua",
+        content: match[2].replace(/\n$/, ""),
+      });
+      lastIndex = match.index + match[0].length;
+    }
+    if (lastIndex < text.length) {
+      parts.push({ type: "text", content: text.slice(lastIndex) });
+    }
+    if (parts.length === 0) {
+      parts.push({ type: "text", content: text });
+    }
+    return parts;
+  }
+
+  function showLanding() {
+    landing.classList.remove("hidden");
+    appView.classList.remove("active");
+  }
+
+  function showApp() {
+    landing.classList.add("hidden");
+    appView.classList.add("active");
+    userInput.focus();
+  }
+
+  function renderHistory() {
+    if (state.conversations.length === 0) {
+      historyList.innerHTML = '<div class="history-empty">Aún no hay conversaciones</div>';
+      return;
+    }
+
+    historyList.innerHTML = state.conversations
+      .slice()
+      .sort((a, b) => b.updatedAt - a.updatedAt)
+      .map(
+        (c) => `
+        <div class="history-item ${c.id === state.currentId ? "active" : ""}" data-id="${c.id}">
+          ${escapeHtml(c.title || "Sin título")}
+        </div>`
+      )
+      .join("");
+
+    historyList.querySelectorAll(".history-item").forEach((el) => {
+      el.addEventListener("click", () => {
+        openConversation(el.dataset.id);
+        sidebar.classList.remove("open");
+      });
+    });
+  }
+
+  function renderMessages() {
+    const conv = getCurrent();
+    if (!conv || conv.messages.length === 0) {
+      messagesEl.innerHTML = "";
+      messagesEl.appendChild(welcomeChat);
+      welcomeChat.classList.remove("hidden");
+      return;
+    }
+
+    welcomeChat.classList.add("hidden");
+    messagesEl.innerHTML = "";
+
+    conv.messages.forEach((msg) => {
+      const div = document.createElement("div");
+      div.className = `message ${msg.role}`;
+
+      if (msg.role === "user") {
+        div.innerHTML = `
+          <div class="message-bubble">${escapeHtml(msg.content)}</div>
+          <div class="message-meta">Tú</div>`;
+      } else if (msg.role === "error") {
+        div.innerHTML = `
+          <div class="message-bubble error-bubble">${escapeHtml(msg.content)}</div>
+          <div class="message-meta">Error</div>`;
+      } else {
+        const parts = parseReply(msg.content);
+        let html = '<div class="message-bubble">';
+
+        parts.forEach((p) => {
+          if (p.type === "text") {
+            let t = escapeHtml(p.content)
+              .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+              .replace(/\n/g, "<br>");
+            html += t;
+          } else {
+            const codeId = "code-" + uid();
+            html += `
+              <div class="code-block">
+                <div class="code-header">
+                  <div class="code-title">
+                    <span>DANUNIVERSAL'S</span>
+                    <span style="opacity:0.6">·</span>
+                    <span>${escapeHtml(p.lang || "code")}</span>
+                  </div>
+                  <div class="code-actions">
+                    <button class="btn btn-secondary btn-copy" data-code-id="${codeId}" type="button">Copiar</button>
+                    <button class="btn btn-secondary btn-improve" data-code-id="${codeId}" type="button">Mejorar</button>
+                    <button class="btn btn-secondary btn-fix" data-code-id="${codeId}" type="button">Corregir</button>
+                    <button class="btn btn-secondary btn-explain" data-code-id="${codeId}" type="button">Explicar</button>
+                  </div>
+                </div>
+                <pre class="code-content" id="${codeId}">${escapeHtml(p.content)}</pre>
+              </div>`;
+          }
+        });
+
+        html += `</div><div class="message-meta">DANUNIVERSAL'S Script AI</div>`;
+        div.innerHTML = html;
+      }
+
+      messagesEl.appendChild(div);
+    });
+
+    messagesEl.querySelectorAll(".btn-copy").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const code = document.getElementById(btn.dataset.codeId)?.textContent || "";
+        navigator.clipboard.writeText(code).then(() => {
+          const original = btn.textContent;
+          btn.textContent = "¡Copiado!";
+          setTimeout(() => (btn.textContent = original), 1800);
+        });
+      });
+    });
+
+    messagesEl.querySelectorAll(".btn-improve").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const code = document.getElementById(btn.dataset.codeId)?.textContent || "";
+        sendMessage(code, "improve");
+      });
+    });
+
+    messagesEl.querySelectorAll(".btn-fix").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const code = document.getElementById(btn.dataset.codeId)?.textContent || "";
+        sendMessage(code, "fix");
+      });
+    });
+
+    messagesEl.querySelectorAll(".btn-explain").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const code = document.getElementById(btn.dataset.codeId)?.textContent || "";
+        sendMessage(code, "explain");
+      });
+    });
+
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function showTyping() {
+    const div = document.createElement("div");
+    div.className = "message assistant";
+    div.id = "typingIndicator";
+    div.innerHTML = `
+      <div class="typing-indicator">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>`;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function hideTyping() {
+    const el = $("#typingIndicator");
+    if (el) el.remove();
+  }
+
+  function newConversation() {
+    const id = uid();
+    state.conversations.unshift({
+      id,
+      title: "Nuevo chat",
+      messages: [],
+      updatedAt: Date.now(),
+    });
+    state.currentId = id;
+    save();
+    renderHistory();
+    renderMessages();
+    userInput.focus();
+  }
+
+  function openConversation(id) {
+    state.currentId = id;
+    renderHistory();
+    renderMessages();
+  }
+
+  function ensureConversation() {
+    if (!state.currentId || !getCurrent()) {
+      newConversation();
+    }
+  }
+
+  async function sendMessage(text, mode = "generate") {
+    if (state.isGenerating) return;
+    const content = (text || userInput.value || "").trim();
+    if (!content) return;
+
+    ensureConversation();
+    const conv = getCurrent();
+
+    conv.messages.push({ role: "user", content });
+    if (conv.title === "Nuevo chat") {
+      conv.title = content.slice(0, 42) + (content.length > 42 ? "…" : "");
+    }
+    conv.updatedAt = Date.now();
+    save();
+    renderHistory();
+    renderMessages();
+
+    userInput.value = "";
+    autoResize();
+    updateSendBtn();
+
+    state.isGenerating = true;
+    btnSend.disabled = true;
+    showTyping();
+
+    try {
+      const history = conv.messages.slice(0, -1).map((m) => ({
+        role: m.role === "error" ? "assistant" : m.role,
+        content: m.content,
+      }));
+
+      const res = await fetch("/.netlify/functions/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: content,
+          history,
+          mode,
+        }),
+      });
+
+      const data = await res.json();
+
+      hideTyping();
+
+      if (!res.ok || data.error) {
+        conv.messages.push({
+          role: "error",
+          content: data.error || "Error desconocido al generar la respuesta.",
+        });
+      } else {
+        conv.messages.push({
+          role: "assistant",
+          content: data.reply,
+        });
+      }
+
+      conv.updatedAt = Date.now();
+      save();
+      renderHistory();
+      renderMessages();
+    } catch (err) {
+      hideTyping();
+      console.error(err);
+      conv.messages.push({
+        role: "error",
+        content: "No se pudo conectar con el servidor. Verifica tu conexión e inténtalo de nuevo.",
+      });
+      save();
+      renderMessages();
+    } finally {
+      state.isGenerating = false;
+      updateSendBtn();
+    }
+  }
+
+  function autoResize() {
+    userInput.style.height = "auto";
+    userInput.style.height = Math.min(userInput.scrollHeight, 160) + "px";
+  }
+
+  function updateSendBtn() {
+    btnSend.disabled = state.isGenerating || !userInput.value.trim();
+  }
+
+  function init() {
+    load();
+    renderHistory();
+
+    btnStart?.addEventListener("click", () => {
+      showApp();
+      if (!state.currentId) newConversation();
+      else renderMessages();
+    });
+    btnGoChat?.addEventListener("click", () => {
+      showApp();
+      if (!state.currentId) newConversation();
+      else renderMessages();
+    });
+
+    logoHome?.addEventListener("click", (e) => {
+      e.preventDefault();
+      showLanding();
+    });
+
+    btnNewChat?.addEventListener("click", () => {
+      newConversation();
+      sidebar.classList.remove("open");
+    });
+
+    btnSidebar?.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (
+        sidebar.classList.contains("open") &&
+        !sidebar.contains(e.target) &&
+        !btnSidebar.contains(e.target)
+      ) {
+        sidebar.classList.remove("open");
+      }
+    });
+
+    btnSend?.addEventListener("click", () => sendMessage());
+
+    userInput?.addEventListener("input", () => {
+      autoResize();
+      updateSendBtn();
+    });
+
+    userInput?.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        if (!btnSend.disabled) sendMessage();
+      }
+    });
+
+    document.querySelectorAll("[data-prompt]").forEach((el) => {
+      el.addEventListener("click", () => {
+        const prompt = el.dataset.prompt;
+        showApp();
+        ensureConversation();
+        userInput.value = prompt;
+        autoResize();
+        updateSendBtn();
+        sendMessage(prompt);
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+  </script>
+</body>
+</html>
